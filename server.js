@@ -2,7 +2,7 @@
 const express = require("express");
 // finds path for filename paths
 const path = require("path");
-const dataBase = require("./db");
+const dataBase = require("./db/db.json");
 // fs reads and writes to files
 const fs = require("fs");
 // initial port for app listeners
