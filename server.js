@@ -9,7 +9,8 @@ const fs = require('fs');
 const PORT = process.env.PORT || 3001;
 // creates the server for "express"
 const app = express();
-
+// helps set up data parsing so that express will interpret and format the data properly as json. This is needed for API calls. 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+// Static link
 app.use(express.static('public'));
