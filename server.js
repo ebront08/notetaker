@@ -7,7 +7,7 @@ const dataBase = require('./db');
 const fs = require('fs');
 // initial port for app listeners
 const PORT = process.env.PORT || 3001;
-
+// creates the server for "express"
 const app = express();
 
 app.use(express.json());
