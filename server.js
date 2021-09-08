@@ -53,3 +53,17 @@ app.delete("/api/notes/:id", (req, res) => {
   deleteNote(req.params.id, dataBase);
   res.json(true);
 });
+// A const function that will delete notes if needed
+const deleteNote = (id, notesArray) => {
+  for (let i = 0; i < notesArray.length; i++) {
+    let note = notesArray[i];
+    if (note.id == id) {
+      notesArray.splice(i, 1);
+      fs.writeFileSync(
+        path.join(__dirname, "./db/db.json"),
+        JSON.stringify(notesArray, null, 2)
+      );
+      break;
+    }
+  }
+};
