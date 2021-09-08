@@ -67,3 +67,7 @@ const deleteNote = (id, notesArray) => {
     }
   }
 };
+// Where the app will listen
+app.listen(PORT, () => {
+  console.log(`App listens here http://localhost:${PORT}`);
+});
