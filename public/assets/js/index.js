@@ -3,6 +3,8 @@ let noteText;
 let saveNoteBtn;
 let newNoteBtn;
 let noteList;
+// activeNote is used to keep track of the note in the textarea
+let activeNote = {};
 
 if (window.location.pathname === '/notes') {
   noteTitle = document.querySelector('.note-title');
@@ -12,19 +14,17 @@ if (window.location.pathname === '/notes') {
   noteList = document.querySelectorAll('.list-container .list-group');
 }
 
-// Show an element
+// Shows the element
 const show = (elem) => {
   elem.style.display = 'inline';
 };
 
-// Hide an element
+// Hides the element
 const hide = (elem) => {
   elem.style.display = 'none';
 };
 
-// activeNote is used to keep track of the note in the textarea
-let activeNote = {};
-
+// This function gets all notes from the db folder
 const getNotes = () =>
   fetch('/api/notes', {
     method: 'GET',
@@ -32,7 +32,7 @@ const getNotes = () =>
       'Content-Type': 'application/json',
     },
   });
-
+// This function will save notes to the db folder 
 const saveNote = (note) =>
   fetch('/api/notes', {
     method: 'POST',
@@ -41,7 +41,7 @@ const saveNote = (note) =>
     },
     body: JSON.stringify(note),
   });
-
+// This function will delete note from the db folder 
 const deleteNote = (id) =>
   fetch(`/api/notes/${id}`, {
     method: 'DELETE',
@@ -49,8 +49,8 @@ const deleteNote = (id) =>
       'Content-Type': 'application/json',
     },
   });
-
-const renderActiveNote = () => {
+// this const will display an active or current note. Or display text or render empty. 
+const displayActiveNote = () => {
   hide(saveNoteBtn);
 
   if (activeNote.id) {
@@ -77,9 +77,9 @@ const handleNoteSave = () => {
   });
 };
 
-// Delete the clicked note
+// Deletes the clicked  handle note
 const handleNoteDelete = (e) => {
-  // Prevents the click listener for the list from being called when the button inside of it is clicked
+  // Prevents the click listener for the list from being called when the button inside is clicked
   e.stopPropagation();
 
   const note = e.target;
@@ -116,7 +116,7 @@ const handleRenderSaveBtn = () => {
   }
 };
 
-// Render the list of note titles
+// Renders the list of note titles
 const renderNoteList = async (notes) => {
   let jsonNotes = await notes.json();
   if (window.location.pathname === '/notes') {
@@ -170,7 +170,7 @@ const renderNoteList = async (notes) => {
   }
 };
 
-// Gets notes from the db and renders them to the sidebar
+// Gets notes from the db folder and renders them to the sidebar
 const getAndRenderNotes = () => getNotes().then(renderNoteList);
 
 if (window.location.pathname === '/notes') {
