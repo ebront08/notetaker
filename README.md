@@ -1,6 +1,10 @@
 # 11 Express.js: Note Taker
 App link: https://safe-basin-72124.herokuapp.com/
 Github link: https://github.com/ebront08/notetaker
+App screenshots 
+<img width="1440" alt="NoteTaker screenshot " src="https://user-images.githubusercontent.com/68530678/132999010-de2240dc-2868-4d97-adac-528bf8a753b8.png">
+<img width="1440" alt="NoteTaker screenshot 2" src="https://user-images.githubusercontent.com/68530678/132999013-5594df02-33c3-4932-abbd-fc2871677dbf.png">
+
 ## Your Task
 
 Your assignment is to modify starter code to create an application called Note Taker that can be used to write and save notes. This application will use an Express.js back end and will save and retrieve note data from a JSON file.
